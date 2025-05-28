@@ -1,20 +1,21 @@
 import { forwardRef, Module } from '@nestjs/common';
-import { StocksController } from './shifts.controller';
-import { StocksService } from './shifts.service';
-import { SequelizeModule } from "@nestjs/sequelize";
-import { Shifts } from "./shifts.model";
+import { ShiftsController } from './shifts.controller';
+import { ShiftsService } from './shifts.service';
 import { RolesModule } from "../roles/roles.module";
 import { AuthModule } from "../auth/auth.module";
+import { Shifts } from './shifts.model';
+import { SequelizeModule } from '@nestjs/sequelize';
 
 @Module({
-    controllers: [StocksController],
-    providers: [StocksService],
+    controllers: [ShiftsController],
+    providers: [ShiftsService],
     imports: [
         RolesModule,
+        SequelizeModule.forFeature([Shifts]),
         forwardRef(() => AuthModule),
     ],
     exports: [
-        StocksService,
+        ShiftsService,
     ]
 })
-export class StocksModule { }
+export class ShiftsModule { }

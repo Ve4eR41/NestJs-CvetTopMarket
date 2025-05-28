@@ -5,7 +5,7 @@ import {UserRoles} from "../roles/user-roles.model";
 import {Post} from "../posts/posts.model";
 
 interface UserCreationAttrs {
-    email: string;
+    fio: string;
     password: string;
 }
 
@@ -17,7 +17,7 @@ export class User extends Model<User, UserCreationAttrs> {
 
     @ApiProperty({example: 'user@mail.ru', description: 'Почтовый адрес'})
     @Column({type: DataType.STRING, unique: true, allowNull: false})
-    email: string;
+    fio: string;
     
     @ApiProperty({example: '12345678', description: 'Пароль'})
     @Column({type: DataType.STRING, allowNull: false})
@@ -34,6 +34,5 @@ export class User extends Model<User, UserCreationAttrs> {
     @BelongsToMany(() => Role, () => UserRoles)
     roles: Role[];
 
-    @HasMany(() => Post)
-    posts: Post[];
+  
 }

@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, UseGuards, UsePipes } from '@nestjs/common';
-import { CreateStocksDto } from "./dto/CreateStocks.dto";
-import { StocksService } from "./shifts.service";
+import { CreateShiftsDto } from "./dto/CreateShifts.dto";
+import { ShiftsService } from "./shifts.service";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Shifts } from "./shifts.model";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
@@ -10,10 +10,10 @@ import { ValidationPipe } from "../pipes/validation.pipe";
 import { get } from 'http';
 
 @ApiTags('///')
-@Controller('stocks')
-export class StocksController {
+@Controller('shifts')
+export class ShiftsController {
 
-    constructor(private stocksService: StocksService) { }
+    constructor(private ShiftsService: ShiftsService) { }
 
 
 
@@ -30,7 +30,16 @@ export class StocksController {
     @ApiResponse({ status: 200, type: [Shifts] })
     @Get("/all")
     getAll() {
-        return this.stocksService.getAll()
+        return this.ShiftsService.getAll()
+    }
+
+
+
+    @ApiOperation({ summary: '...' })
+    @ApiResponse({ status: 200, type: [Shifts] })
+    @Post("/create")
+    create(@Body() dto: CreateShiftsDto) {
+        return this.ShiftsService.create(dto)
     }
 
 

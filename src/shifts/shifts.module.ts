@@ -1,8 +1,8 @@
 import { forwardRef, Module } from '@nestjs/common';
-import { StocksController } from './stocks.controller';
-import { StocksService } from './stocks.service';
+import { StocksController } from './shifts.controller';
+import { StocksService } from './shifts.service';
 import { SequelizeModule } from "@nestjs/sequelize";
-import { Stocks } from "./stocks.model";
+import { Shifts } from "./shifts.model";
 import { RolesModule } from "../roles/roles.module";
 import { AuthModule } from "../auth/auth.module";
 

@@ -2,7 +2,7 @@ version: '3.0'
 
 services:
   main:
-    container_name: main
+    container_name: main_ctm
     build:
       context: .
     env_file:
@@ -11,7 +11,7 @@ services:
       - .:/app
       - /app/node_modules
     ports:
-      - 5000:5000
+      - 4000:4000
       - 9229:9229
     command: npm run start:dev
     depends_on:
@@ -19,7 +19,7 @@ services:
     restart: always
 
   postgres:
-    container_name: postgres
+    container_name: postgres_ctm
     image: postgres:12
     env_file:
       - .development.env

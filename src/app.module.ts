@@ -12,8 +12,8 @@ import { Post } from "./posts/posts.model";
 import { FilesModule } from './files/files.module';
 import { ServeStaticModule } from "@nestjs/serve-static";
 import * as path from 'path';
-import { StocksModule } from "./stocks/stocks.module";
-import { Stocks } from "./stocks/stocks.model";
+import { StocksModule } from "./shifts/shifts.module";
+import { Shifts } from "./shifts/shifts.model";
 
 @Module({
     controllers: [],
